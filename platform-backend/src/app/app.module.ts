@@ -7,6 +7,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 import { Route, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
+import * as $ from 'jquery';
 
 const routes: Route[] =
 [
