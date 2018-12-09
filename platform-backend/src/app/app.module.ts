@@ -8,12 +8,21 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { Route, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import * as $ from 'jquery';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfilePageComponent } from './profile-page/profile-page.component'
 
 const routes: Route[] =
 [
   {
     path: '',
-    component: HomePageComponent
+    component: LoginPageComponent
+  },
+  {
+    path: 'profile',
+    component: ProfilePageComponent
   }
 ]
 
@@ -21,12 +30,18 @@ const routes: Route[] =
   declarations: [
     AppComponent,
     NavBarComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoginPageComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
