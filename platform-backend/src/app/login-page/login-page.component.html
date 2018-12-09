@@ -1,0 +1,18 @@
+<div class="d-flex align-items-center justify-content-center h-100">
+  <form class="auth-form p-4" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <div class="auth-form-header">
+      <span class="h4">Sign in to Admin</span>
+    </div>
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input id="username" class="form-control" name="username" formControlName="username" type="text" placeholder="">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" class="form-control" name="password" formControlName="password" type="password" placeholder="">
+    </div>
+    <button class="btn btn-primary btn-block" type="submit" [disabled]="!authForm.valid">Sign in</button>
+  </form>
+</div>
+<div class="spinner" [ngStyle]="{'display': loading ? 'block' : 'none'}"><mat-spinner ></mat-spinner></div>

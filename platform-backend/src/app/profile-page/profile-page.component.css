@@ -1,0 +1,14 @@
+.avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: whitesmoke;
+    background-size: cover;
+    background-image: url(https://m.media-amazon.com/images/M/MV5BOTc4ODA0NzA4OF5BMl5BanBnXkFtZTcwNDA4NTc4Mg@@._V1_UX214_CR0,0,214,317_AL__QL50.jpg);
+    cursor: pointer;
+    transition: all linear 0.5s;
+}
+
+.avatar:hover{
+    transform: scale(1.1)
+}

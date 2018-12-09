@@ -1,0 +1,21 @@
+.auth-form{
+    width: 340px;
+    border: 2px solid rgb(230, 230, 230);
+}
+
+.auth-form-header{
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.btn-primary{
+    border-color: #5840ac;
+    background-color: #5840ac;
+}
+
+.spinner{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+}
