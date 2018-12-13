@@ -38,7 +38,7 @@ function authenticateAsync(username, password) {
                 connection.query(sql, function (err, res) {
                     if (err) {
                         // Not authenticated
-                        reject(false);
+                        reject(err);
                     }
                     else {
                         if (res.length > 0) {

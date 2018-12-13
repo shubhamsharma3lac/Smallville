@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../user';
 
 @Component({
   selector: 'app-profile-page',
@@ -8,17 +9,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ProfilePageComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  private user: User;
+
+  constructor(private http: HttpClient) { 
+    this.user = JSON.parse(localStorage.getItem('admin'));
+  }
 
   ngOnInit() {
     var that = this;
     $('#avatar').on('change', function(){
-      that.updateImageDisplay(this);
-      that.postAvatarImage(this);
+      that.updateAvatarImage(this);
     })
   }
 
-  updateImageDisplay(element: any){
+  updateAvatarDisplay(element: any){
     var file = element.files[0] as File;
     let reader = new FileReader();
     reader.onloadend = function(ev){
@@ -28,18 +32,20 @@ export class ProfilePageComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  postAvatarImage(element: any){
+  updateAvatarImage(element: any){
     var file = element.files[0] as File;
-    let data = new FormData();
-    data.append('thumbnail', file, file.name);
+    
+    let formData = new FormData();
+    formData.append('avatar', file, file.name);
+    formData.append('userid', "" + this.user.id);
 
     let headers = new HttpHeaders({
       'enctype': 'multipart/form-data'
     })
 
-    const url = 'http://localhost:3000/profile/update/avatar';
-    this.http.post(url, data, { headers }).subscribe((res) => {
-      var x = res;
+    const url = 'http://localhost:3000/profile/update/';
+    this.http.post(url, formData, { headers }).subscribe((res) => {
+      this.updateAvatarDisplay(element);
     })
   }
 
